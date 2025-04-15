@@ -1,0 +1,129 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% F.-Javier Heredia https://gnom.upc.edu/heredia
+% https://creativecommons.org/licenses/by-nc/4.0/
+%
+% [sol,par] = uosol_st(P,x1,par)
+%
+% Template for the unconstrained optimization with first and second
+% derivative methods.
+%
+% See uolib.mlx for a description of the input/output arguments,
+% standard output and calls.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+function [sol,par] = uosol_st(P,x,par)
+
+%
+% Initializations
+
+if nargin < 3
+    par.epsG = 10^-6;
+    par.maxiter = 500;        
+    par.iAC = 2;
+    par.almax = 1;       
+    par.almin = 10^-6;                
+    par.rho =0.5;
+    par.c1 = 0.01;
+    par.c2 = 0.9;
+    par.isd = 1; %1 for GM, 2 for CGM, 3 for BFGS, 4 for NM, 5 for MNM-SD, 6 for MNM.CMI
+    par.delta = 0.001;
+end
+n=size(x,1);
+f = P.f;
+g = P.g;
+h = P.h;
+delta = par.delta;
+k = 1;
+sol(k).x    = x;
+ldescent = true;
+
+
+%
+% Algorithm
+%
+while norm(g(x)) > par.epsG & k < par.maxiter & (ldescent | par.isd == 4)
+    if par.isd == 1
+        % GM
+        d = -g(x);
+        sol(k).H = eye(n);
+    elseif par.isd == 3
+        % BFGS, Quasi-Newton
+        if k == 1
+            H = eye(n);
+        else
+            s = x - (x - al*d); %iteració actual (k) menys la anterior(k-1)
+            y = g(x) - g(x - al*d);
+            rho = (y'*s)^-1;
+            H = (eye(n)-rho*s*y')*H*(eye(n)-rho*y*s')+rho*s*s';
+        end
+        d = -H*g(x);
+        sol(k).H = H;
+    elseif par.isd == 4
+        % NM
+        d = -h(x)^-1*g(x);
+        sol(k).H = h(x);
+    elseif par.isd == 5
+        % MNM-SD
+        [Q, La] = eig(h(x));
+        Hat_La = diag(max(delta, diag(La)));
+        B = Q*Hat_La*Q';
+        d = -B^-1*g(x);
+        sol(k).H = B;
+    elseif par.isd == 6
+        % MNM-CMI
+        L_ub = norm(h(x), 'fro');
+        tau = 0;
+        l = 0;
+        [R, PD] = chol(h(x)+tau*eye(n));
+        while PD > 0
+            l = l + 1;
+            tau = (1.01 - 1/2^l)*L_ub;
+            [R, PD] = chol(h(x)+tau*eye(n));
+        end
+        B = R' * R;
+        d = -B^-1*g(x);
+        sol(k).tau = tau;
+        sol(k).H = B;
+    elseif par.isd == 7
+        % SGM
+        %
+        % Code Here
+        %
+    end
+    ldescent = d'*g(x) < 0;
+    % LS
+    if     par.isd == 4     % unit step length for the Newton method.
+        al =1;
+        ACout="";
+    elseif par.iAC == 0     % Exact line search.
+        al = -g(x)'*d/(d'*h(x)*d);
+        ACout = "ELS";
+    elseif par.iAC == 4
+        if k == 1
+            [al,ACout] = uoBLS_st(x,d,P,par); %In the first iteration alpha is not defined
+        else
+            par.almax = 2*(f(x)-f(x-al*d))/g(x)*d;
+        end
+        [al, iout] = uoBLSNW32(f, g, x, d, par.almax, par.c1, par.c2);
+    elseif par.iAC <= 3      % BLS.
+        [al,ACout] = uoBLS_st(x,d,P,par);
+    end
+    sol(k).x  = x;
+    sol(k).g  = g(x);
+    sol(k).ng = norm(g(x));
+    sol(k).d  = d;
+    sol(k).al = al;
+    sol(k).AC = ACout;
+    x = x + al*d; k=k+1;
+end %............................................................ main loop
+sol(k).x  = x;
+sol(k).g  = g(x);
+sol(k).ng = norm(g(x));
+%
+% Iterations log
+%
+[sol] = uosolLog(P,par,sol);
+end
+% [end] Function [uosol_st] %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
