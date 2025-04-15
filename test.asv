@@ -1,9 +1,9 @@
 % NN model:
 nn.tr_seed = 123456; nn.te_seed = 789101; nn.sg_seed = 565544; % Seeds.
-nn.tr_p = 250; nn.te_q = nn.tr_p /10; nn.tr_freq = 0.5;      % Datasets 
+nn.tr_p = 2500; nn.te_q = nn.tr_p /10; nn.tr_freq = 0.5;      % Datasets 
 % Training
 par.epsG = 10^-2; par.maxiter = 100;                           % Stopping cond.
-par.iAC = 4; par.c1 = 0.01; par.c2 = 0.9;                      % Linesearch.
+par.iAC = 2; par.c1 = 0.01; par.c2 = 0.9;                      % Linesearch.
 par.almax = 1; par.almin = 10^-6; par.rho = 0.5; par.delta = 0.001;
 par.sg.seed = nn.sg_seed; par.sg.al0 = 2; par.sg.be = 0.3;     % SGM
 par.sg.m = 10; par.sg.emax = 100; par.sg.eworse = 5;

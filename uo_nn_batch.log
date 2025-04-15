@@ -1,4 +1,22 @@
 [uo_nn_batch]  Starts
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 1
+
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
    epsG = 1.0e-02, maxiter =  100
@@ -35,6 +53,24 @@ te_acc =
 
    100
 
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 3
+
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
    epsG = 1.0e-02, maxiter =  100
@@ -69,6 +105,24 @@ tr_acc =
 te_acc =
 
      0
+
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 1
 
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
@@ -106,6 +160,24 @@ te_acc =
 
    100
 
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 3
+
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
    epsG = 1.0e-02, maxiter =  100
@@ -140,6 +212,24 @@ tr_acc =
 te_acc =
 
      0
+
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 1
 
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
@@ -176,6 +266,24 @@ tr_acc =
 te_acc =
 
    100
+
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 3
 
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
@@ -215,6 +323,24 @@ te_acc =
 
      0
 
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 1
+
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
    epsG = 1.0e-02, maxiter =  100
@@ -251,6 +377,24 @@ te_acc =
 
     92
 
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 3
+
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
    epsG = 1.0e-02, maxiter =  100
@@ -285,6 +429,24 @@ tr_acc =
 te_acc =
 
      0
+
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 1
 
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
@@ -321,6 +483,24 @@ tr_acc =
 te_acc =
 
     92
+
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 3
 
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
@@ -361,6 +541,24 @@ te_acc =
 
      0
 
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 1
+
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
    epsG = 1.0e-02, maxiter =  100
@@ -396,6 +594,24 @@ tr_acc =
 te_acc =
 
     92
+
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 3
 
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
@@ -435,6 +651,24 @@ te_acc =
 
      0
 
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 1
+
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
    epsG = 1.0e-02, maxiter =  100
@@ -470,6 +704,24 @@ tr_acc =
 te_acc =
 
     92
+
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 3
 
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
@@ -519,6 +771,24 @@ te_acc =
 
    100
 
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 1
+
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
    epsG = 1.0e-02, maxiter =  100
@@ -555,6 +825,24 @@ te_acc =
 
     92
 
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 3
+
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
    epsG = 1.0e-02, maxiter =  100
@@ -589,6 +877,24 @@ tr_acc =
 te_acc =
 
      0
+
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 1
 
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
@@ -626,6 +932,24 @@ te_acc =
 
     92
 
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 3
+
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
    epsG = 1.0e-02, maxiter =  100
@@ -661,6 +985,24 @@ tr_acc =
 te_acc =
 
      0
+
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 1
 
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
@@ -698,6 +1040,24 @@ te_acc =
 
     96
 
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 3
+
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
    epsG = 1.0e-02, maxiter =  100
@@ -732,6 +1092,24 @@ tr_acc =
 te_acc =
 
      0
+
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 1
 
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
@@ -768,6 +1146,24 @@ tr_acc =
 te_acc =
 
     96
+
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 3
 
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
@@ -807,6 +1203,24 @@ te_acc =
 
      0
 
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 1
+
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
    epsG = 1.0e-02, maxiter =  100
@@ -842,6 +1256,24 @@ tr_acc =
 te_acc =
 
     96
+
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 3
 
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
@@ -881,6 +1313,24 @@ te_acc =
 
      0
 
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 1
+
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
    epsG = 1.0e-02, maxiter =  100
@@ -916,6 +1366,24 @@ tr_acc =
 te_acc =
 
     80
+
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 3
 
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
@@ -963,6 +1431,24 @@ te_acc =
 
      0
 
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 1
+
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
    epsG = 1.0e-02, maxiter =  100
@@ -998,6 +1484,24 @@ tr_acc =
 te_acc =
 
     80
+
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 3
 
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
@@ -1036,6 +1540,24 @@ te_acc =
 
      0
 
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 1
+
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
    epsG = 1.0e-02, maxiter =  100
@@ -1071,6 +1593,24 @@ tr_acc =
 te_acc =
 
     80
+
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 3
 
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
@@ -1110,6 +1650,24 @@ te_acc =
 
      0
 
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 1
+
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
    epsG = 1.0e-02, maxiter =  100
@@ -1145,6 +1703,24 @@ tr_acc =
 te_acc =
 
     72
+
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 3
 
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
@@ -1191,6 +1767,24 @@ te_acc =
 
    100
 
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 1
+
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
    epsG = 1.0e-02, maxiter =  100
@@ -1227,6 +1821,24 @@ te_acc =
 
     72
 
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 3
+
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
    epsG = 1.0e-02, maxiter =  100
@@ -1261,6 +1873,24 @@ tr_acc =
 te_acc =
 
      0
+
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 1
 
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
@@ -1298,6 +1928,24 @@ te_acc =
 
     72
 
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 3
+
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
    epsG = 1.0e-02, maxiter =  100
@@ -1332,6 +1980,24 @@ tr_acc =
 te_acc =
 
      0
+
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 1
 
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
@@ -1369,6 +2035,24 @@ te_acc =
 
    100
 
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 3
+
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
    epsG = 1.0e-02, maxiter =  100
@@ -1403,6 +2087,24 @@ tr_acc =
 te_acc =
 
      0
+
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 1
 
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
@@ -1439,6 +2141,24 @@ tr_acc =
 te_acc =
 
    100
+
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 3
 
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
@@ -1478,6 +2198,24 @@ te_acc =
 
      0
 
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 1
+
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
    epsG = 1.0e-02, maxiter =  100
@@ -1513,6 +2251,24 @@ tr_acc =
 te_acc =
 
    100
+
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 3
 
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
@@ -1552,6 +2308,24 @@ te_acc =
 
      0
 
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 1
+
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
    epsG = 1.0e-02, maxiter =  100
@@ -1587,6 +2361,24 @@ tr_acc =
 te_acc =
 
     88
+
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 3
 
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
@@ -1633,6 +2425,24 @@ te_acc =
 
     92
 
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 1
+
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
    epsG = 1.0e-02, maxiter =  100
@@ -1669,6 +2479,24 @@ te_acc =
 
     88
 
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 3
+
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
    epsG = 1.0e-02, maxiter =  100
@@ -1703,6 +2531,24 @@ tr_acc =
 te_acc =
 
      0
+
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 1
 
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
@@ -1739,6 +2585,24 @@ tr_acc =
 te_acc =
 
     88
+
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 3
 
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
@@ -1777,6 +2641,24 @@ te_acc =
 
      0
 
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 1
+
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
    epsG = 1.0e-02, maxiter =  100
@@ -1812,6 +2694,24 @@ tr_acc =
 te_acc =
 
     84
+
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 3
 
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
@@ -1856,6 +2756,24 @@ te_acc =
 
     96
 
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 1
+
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
    epsG = 1.0e-02, maxiter =  100
@@ -1891,6 +2809,24 @@ tr_acc =
 te_acc =
 
     84
+
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 3
 
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
@@ -1938,6 +2874,24 @@ te_acc =
 
      0
 
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 1
+
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
    epsG = 1.0e-02, maxiter =  100
@@ -1973,6 +2927,24 @@ tr_acc =
 te_acc =
 
     84
+
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 3
 
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
@@ -2019,6 +2991,24 @@ te_acc =
 
      0
 
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 1
+
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
    epsG = 1.0e-02, maxiter =  100
@@ -2055,6 +3045,24 @@ te_acc =
 
     92
 
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 3
+
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
    epsG = 1.0e-02, maxiter =  100
@@ -2085,6 +3093,24 @@ tr_acc =
 te_acc =
 
    100
+
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 1
 
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
@@ -2122,6 +3148,24 @@ te_acc =
 
     92
 
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 3
+
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
    epsG = 1.0e-02, maxiter =  100
@@ -2156,6 +3200,24 @@ tr_acc =
 te_acc =
 
      0
+
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 1
 
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
@@ -2193,6 +3255,24 @@ te_acc =
 
     92
 
+
+par = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+       epsG: 0.0100
+    maxiter: 100
+        iAC: 4
+         c1: 0.0100
+         c2: 0.9000
+      almax: 1
+      almin: 1.0000e-06
+        rho: 0.5000
+      delta: 1.0000e-03
+         sg: [1×1 struct]
+        log: 1
+        isd: 3
+
    [uosolLog]
    f  = @(w)nn.L(w,Xtr,ytr)
    epsG = 1.0e-02, maxiter =  100
@@ -2226,4 +3306,4 @@ te_acc =
 
      0
 
-[uo_nn_batch]  Stops, wall time =   14.5 s.
+[uo_nn_batch]  Stops, wall time =   12.6 s.

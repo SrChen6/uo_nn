@@ -105,7 +105,7 @@ while norm(g(x)) > par.epsG & k < par.maxiter & (ldescent | par.isd == 4)
         else
             par.almax = 2*(f(x)-f(x-al*d))/g(x)*d;
         end
-        [al, iout] = uoBLSNW32(f, g, x, d, par.almax, par.c1, par.c2);
+        [al, ACout] = uoBLSNW32(f, g, x, d, par.almax, par.c1, par.c2);
     elseif par.iAC <= 3      % BLS.
         [al,ACout] = uoBLS_st(x,d,P,par);
     end
