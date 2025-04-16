@@ -103,7 +103,7 @@ while norm(g(x)) > par.epsG & k < par.maxiter & (ldescent | par.isd == 4)
         if k == 1
             [al,ACout] = uoBLS_st(x,d,P,par); %In the first iteration alpha is not defined
         else
-            par.almax = 2*(f(x)-f(x-al*d))/(g(x)'*d);
+            par.almax = 2*(f(x)-f(x-al*d))/g(x)*d;
         end
         [al, iout] = uoBLSNW32(f, g, x, d, par.almax, par.c1, par.c2);
         if iout == 0
@@ -111,8 +111,7 @@ while norm(g(x)) > par.epsG & k < par.maxiter & (ldescent | par.isd == 4)
         elseif iout == 1
             ACout = "30iter";
         elseif iout == 2
-            ACout = "<10^-3";
-        end
+            ACout = "<"
     elseif par.iAC <= 3      % BLS.
         [al,ACout] = uoBLS_st(x,d,P,par);
     end

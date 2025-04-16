@@ -26,7 +26,7 @@ for num_target = 6
         nn.la = la;
         nn.L  = @(w,Xds,yds) (norm(y(Xds,w)-yds)^2)/size(yds,2) + (la*norm(w)^2)/2;
         nn.gL = @(w,Xds,yds) (2*sig(Xds)*((y(Xds,w)-yds).*y(Xds,w).*(1-y(Xds,w)))')/size(yds,2)+la*w;
-        for isd = 1
+        for isd = 3
             par.isd = isd;
             [nnout] = uo_nn_solve_st(nn,par); %Funció a implementar.
             if iheader == 1
