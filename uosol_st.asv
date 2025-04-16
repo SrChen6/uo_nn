@@ -37,12 +37,27 @@ delta = par.delta;
 k = 1;
 sol(k).x    = x;
 ldescent = true;
+if par.isd == 7 % If the stochastic gradient parameters are given
+    x_k = x;
+    p = size(P.Xtr, 2);
+    m = par.sg.m;
+    k_e = ceil(p/m);
+    k_max = par.sg.emax*k_e;
+    L_best = inf;
+    k = 1;
+    Xtr = P.Xtr;
+    ytr = P.ytr;
+    gL = @(w, Xtr, ytr) g(x, Xtr, ytr); %Name change
+    g = @(w) g(x, Xtr, ytr);
+end
 
+e = 0;
+s = 0;
 
 %
 % Algorithm
 %
-while norm(g(x)) > par.epsG & k < par.maxiter & (ldescent | par.isd == 4)
+while norm(g(x)) > par.epsG & k < par.maxiter & (ldescent | par.isd == 4) & (e <= par.sg.emax & s < par.sg.eworse)
     if par.isd == 1
         % GM
         d = -g(x);
@@ -87,33 +102,67 @@ while norm(g(x)) > par.epsG & k < par.maxiter & (ldescent | par.isd == 4)
         sol(k).H = B;
     elseif par.isd == 7
         % SGM
-        %
-        % Code Here
-        %
+        Per = randperm(p);
+        for i = 0:ceil(p/m-1)
+            Set = Per(i*m+1:min((i+1)*m, p));
+            X_Str = Xtr(:, Set);
+            y_Str = ytr(:, Set);
+            d = -gL(x, X_Str, y_Str);
+
+            al_SG = 0.01*par.sg.al0;
+            k_SG = floor(par.sg.be*k_max);
+            if k <= k_SG
+                al = (1 - k/k_SG)*par.sg.al0 + k/k_SG*al_SG;
+            else
+                al = al_SG;
+            end
+            disp(k);
+            sol(k).al = al;
+            sol(k).f = f(x_k, X_tr, y_Str);
+            x_k = x_k+al*d;
+            k = k + 1;
+        end
     end
     ldescent = d'*g(x) < 0;
-    % LS
-    if     par.isd == 4     % unit step length for the Newton method.
-        al =1;
-        ACout="";
-    elseif par.iAC == 0     % Exact line search.
-        al = -g(x)'*d/(d'*h(x)*d);
-        ACout = "ELS";
-    elseif par.iAC == 4
-        if k == 1
-            [al,ACout] = uoBLS_st(x,d,P,par); %In the first iteration alpha is not defined
+  
+    if par.isd == 7 %Stochastic gradient
+        e = e + 1;
+        L = f(x_k, Xtr, ytr);
+        if L < L_best
+            L_best = L;
+            x = x_k;
+            s = 0;
         else
-            par.almax = 2*(f(x)-f(x-al*d))/g(x)*d;
+            s = s + 1;
         end
-        [al, iout] = uoBLSNW32(f, g, x, d, par.almax, par.c1, par.c2);
-        if iout == 0
-            ACout = "SWC";
-        elseif iout == 1
-            ACout = "30iter";
-        elseif iout == 2
-            ACout = "<"
-    elseif par.iAC <= 3      % BLS.
-        [al,ACout] = uoBLS_st(x,d,P,par);
+        ACout = "";
+
+
+    else
+        % LS
+        if     par.isd == 4     % unit step length for the Newton method.
+            al =1;
+            ACout="";
+        elseif par.iAC == 0     % Exact line search.
+            al = -g(x)'*d/(d'*h(x)*d);
+            ACout = "ELS";
+        elseif par.iAC == 4
+            if k == 1
+                [al,ACout] = uoBLS_st(x,d,P,par); %In the first iteration alpha is not defined
+            else
+                par.almax = 2*(f(x)-f(x-al*d))/(g(x)'*d);
+            end
+            [al, iout] = uoBLSNW32(f, g, x, d, par.almax, par.c1, par.c2);
+            if iout == 0
+                ACout = "SWC";
+            elseif iout == 1
+                ACout = "30iter";
+            elseif iout == 2
+                ACout = "<10^-3";
+            end
+        elseif par.iAC <= 3      % BLS.
+            [al,ACout] = uoBLS_st(x,d,P,par);
+        end
     end
     sol(k).x  = x;
     sol(k).g  = g(x);
@@ -121,7 +170,10 @@ while norm(g(x)) > par.epsG & k < par.maxiter & (ldescent | par.isd == 4)
     sol(k).d  = d;
     sol(k).al = al;
     sol(k).AC = ACout;
-    x = x + al*d; k=k+1;
+    if par.isd ~= 7
+        x = x + al*d; k=k+1;
+    end
+
 end %............................................................ main loop
 sol(k).x  = x;
 sol(k).g  = g(x);
@@ -129,6 +181,7 @@ sol(k).ng = norm(g(x));
 %
 % Iterations log
 %
+disp("Before uosolLog")
 [sol] = uosolLog(P,par,sol);
 end
 % [end] Function [uosol_st] %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

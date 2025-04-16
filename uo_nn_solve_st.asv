@@ -58,26 +58,16 @@ t1 = clock; %Maybe change for tic/toc
 
 %
 % Optimization
-if par.isd == 7
-    P.f = @(w, Xtr, ytr) nn.L(w, Xtr, ytr);
-    P.g = @(w, Xtr, ytr) nn.gL(w, Xtr, ytr);
-    P.h = @(w) eye(35); % hessian not needed (only first order methods)
-    P.Xtr = Xtr; P.ytr = ytr;
-else
 P.f = @(w) nn.L(w, Xtr, ytr);
 P.g = @(w) nn.gL(w, Xtr, ytr);
 P.h = @(w) eye(35); % hessian not needed (only first order methods)
-end
-
 wo = zeros(35, 1);
+
+if 
 [sol, ~] = uosol_st(P, wo, par);
 w = sol(end).x;
 
-if par.isd == 7
-    Lo = P.f(w, Xtr, ytr);
-else
-    Lo = P.f(w);
-end
+Lo = P.f(w);
 niter = size(sol, 2); % Numero de interacions fetes
 
 

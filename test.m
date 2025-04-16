@@ -19,7 +19,7 @@ nn.Acc = @(Xds,yds,wo) 100*sum(yds==round(y(Xds,wo)))/size(Xds,2);
 global iheader; iheader = 1;
 fileID = fopen('uo_nn_batch.csv','w');
 t1 = clock;
-for num_target = 6
+for num_target = 5
     nn.num_target = num_target;
     for la = 0.005
         % Loss function
