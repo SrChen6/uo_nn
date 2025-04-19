@@ -6,7 +6,7 @@ fprintf('[uo_nn_batch]  Starts\n');
 %
 % NN model:''''''''''''''''''''''''''''''''''''''
 nn.tr_seed = 123456; nn.te_seed = 789101; nn.sg_seed = 565544; % Seeds.
-nn.tr_p = 25000; nn.te_q = nn.tr_p /10; nn.tr_freq = 0.5;      % Datasets 
+nn.tr_p = 250; nn.te_q = nn.tr_p /10; nn.tr_freq = 0.5;      % Datasets 
 % Training
 par.epsG = 10^-2; par.maxiter = 100;                           % Stopping cond.
 par.iAC = 4; par.c1 = 0.01; par.c2 = 0.9;                      % Linesearch.
@@ -32,7 +32,7 @@ for num_target = [1:10]
         nn.la = la;
         nn.L  = @(w,Xds,yds) (norm(y(Xds,w)-yds)^2)/size(yds,2) + (la*norm(w)^2)/2;
         nn.gL = @(w,Xds,yds) (2*sig(Xds)*((y(Xds,w)-yds).*y(Xds,w).*(1-y(Xds,w)))')/size(yds,2)+la*w;
-        for isd = [1 3]
+        for isd = [1 3 7]
             par.isd = isd;
             [nnout] = uo_nn_solve_st(nn,par); %Funció a implementar. Es pot provar amb uo_nn_solve(nn, par).
             if iheader == 1

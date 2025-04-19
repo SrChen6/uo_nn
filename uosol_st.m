@@ -33,27 +33,29 @@ n=size(x,1);
 f = P.f;
 g = P.g;
 h = P.h;
-delta = par.delta;
 k = 1;
-sol(k).x    = x;
 ldescent = true;
-if par.isd == 7 % If the stochastic gradient parameters are given
-    x_k = x;
-    p = size(P.Xtr, 2);
+if par.isd == 7 % Initializations for SG
+    Xtr = par.sg.Xtr;
+    ytr = par.sg.ytr;
+    gL = @(w, Xtr, ytr) g(x, Xtr, ytr); %Name change
+    g = @(w) g(x, Xtr, ytr);
+    p = size(par.sg.Xtr, 2);
     m = par.sg.m;
     k_e = ceil(p/m);
     k_max = par.sg.emax*k_e;
     L_best = inf;
-    k = 1;
-    Xtr = P.Xtr;
-    ytr = P.ytr;
-    gL = @(w, Xtr, ytr) g(x, Xtr, ytr); %Name change
-    g = @(w) g(x, Xtr, ytr);
+    x_k = x;
+    par.maxiter = inf;
+
+    al_SG = 0.01*par.sg.al0;
+    k_SG = floor(par.sg.be*k_max);
+
+    e_best = 0; k_best = 0;
 end
 
 e = 0;
 s = 0;
-
 %
 % Algorithm
 %
@@ -61,7 +63,6 @@ while norm(g(x)) > par.epsG & k < par.maxiter & (ldescent | par.isd == 4) & (e <
     if par.isd == 1
         % GM
         d = -g(x);
-        sol(k).H = eye(n);
     elseif par.isd == 3
         % BFGS, Quasi-Newton
         if k == 1
@@ -80,6 +81,7 @@ while norm(g(x)) > par.epsG & k < par.maxiter & (ldescent | par.isd == 4) & (e <
         sol(k).H = h(x);
     elseif par.isd == 5
         % MNM-SD
+        delta = par.delta;
         [Q, La] = eig(h(x));
         Hat_La = diag(max(delta, diag(La)));
         B = Q*Hat_La*Q';
@@ -102,42 +104,44 @@ while norm(g(x)) > par.epsG & k < par.maxiter & (ldescent | par.isd == 4) & (e <
         sol(k).H = B;
     elseif par.isd == 7
         % SGM
+
         Per = randperm(p);
         for i = 0:ceil(p/m-1)
             Set = Per(i*m+1:min((i+1)*m, p));
             X_Str = Xtr(:, Set);
             y_Str = ytr(:, Set);
-            d = -gL(x, X_Str, y_Str);
+            d = -gL(x_k, X_Str, y_Str);
 
-            al_SG = 0.01*par.sg.al0;
-            k_SG = floor(par.sg.be*k_max);
             if k <= k_SG
                 al = (1 - k/k_SG)*par.sg.al0 + k/k_SG*al_SG;
             else
                 al = al_SG;
             end
-            disp(k);
+            % uosolLog update
             sol(k).al = al;
-            sol(k).f = f(x_k, X_Str, y_Str);
+            sol(k).f = f(x_k, Xtr, ytr);
+            sol(k).x  = x_k;
+            sol(k).d  = d;
+            sol(k).AC = "";
+
             x_k = x_k+al*d;
             k = k + 1;
         end
+        x = x_k;
     end
     ldescent = d'*g(x) < 0;
   
     if par.isd == 7 %Stochastic gradient
         e = e + 1;
-        L = f(x_k, Xtr, ytr);
+        L = f(x, Xtr, ytr);
         if L < L_best
             L_best = L;
-            x = x_k;
             s = 0;
+            e_best = e;
+            k_best = k;
         else
             s = s + 1;
         end
-        ACout = "";
-
-
     else
         % LS
         if     par.isd == 4     % unit step length for the Newton method.
@@ -164,13 +168,13 @@ while norm(g(x)) > par.epsG & k < par.maxiter & (ldescent | par.isd == 4) & (e <
             [al,ACout] = uoBLS_st(x,d,P,par);
         end
     end
-    sol(k).x  = x;
-    sol(k).g  = g(x);
-    sol(k).ng = norm(g(x));
-    sol(k).d  = d;
-    sol(k).al = al;
-    sol(k).AC = ACout;
-    if par.isd ~= 7
+    if par.isd ~= 7 %For isd=7 these computations were already made
+        sol(k).x  = x;
+        sol(k).g  = g(x);
+        sol(k).ng = norm(g(x));
+        sol(k).d  = d;
+        sol(k).al = al;
+        sol(k).AC = ACout;
         x = x + al*d; k=k+1;
     end
 
@@ -181,8 +185,16 @@ sol(k).ng = norm(g(x));
 %
 % Iterations log
 %
-disp("Before uosolLog")
-[sol] = uosolLog(P,par,sol);
+
+if par.isd == 7
+    iterinfo.eo = e_best;
+    iterinfo.etot = e;
+    iterinfo.ko = k_best; % TODO: write a coorect implementation
+    iterinfo.ktot = k;
+    [sol] = uosolLog(P,par,sol, iterinfo);
+else
+    [sol] = uosolLog(P,par,sol);
+
 end
 % [end] Function [uosol_st] %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

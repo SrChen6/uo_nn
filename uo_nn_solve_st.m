@@ -70,6 +70,8 @@ P.h = @(w) eye(35); % hessian not needed (only first order methods)
 end
 
 wo = zeros(35, 1);
+par.sg.Xtr = Xtr;
+par.sg.ytr = ytr;
 [sol, ~] = uosol_st(P, wo, par);
 w = sol(end).x;
 
