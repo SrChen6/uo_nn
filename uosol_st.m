@@ -186,15 +186,16 @@ sol(k).ng = norm(g(x));
 % Iterations log
 %
 
-if par.isd == 7
-    iterinfo.eo = e_best;
-    iterinfo.etot = e;
-    iterinfo.ko = k_best; % TODO: write a coorect implementation
-    iterinfo.ktot = k;
-    [sol] = uosolLog(P,par,sol, iterinfo);
-else
-    [sol] = uosolLog(P,par,sol);
-
+if par.log ~= 0
+    if par.isd == 7
+        iterinfo.eo = e_best;
+        iterinfo.etot = e;
+        iterinfo.ko = k_best; % TODO: write a coorect implementation
+        iterinfo.ktot = k;
+        [sol] = uosolLog(P,par,sol, iterinfo);
+    else
+        [sol] = uosolLog(P,par,sol);
+    end
 end
 % [end] Function [uosol_st] %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

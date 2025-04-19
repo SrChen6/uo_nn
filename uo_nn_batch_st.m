@@ -14,7 +14,7 @@ par.almax = 1; par.almin = 10^-6; par.rho = 0.5; par.delta = 0.001;
 par.sg.seed = nn.sg_seed; par.sg.al0 = 2; par.sg.be = 0.3;     % SGM
 par.almax = 1;
 par.sg.m = 10; par.sg.emax = 100; par.sg.eworse = 5;
-par.log = 0;  % if =0, call to [uosolLog] cancelled.
+par.log = 1;  % if =0, call to [uosolLog] cancelled.
 % Aux. functions
 sig    = @(X)   1./(1+exp(-X));
 y      = @(X,w) sig(w'*sig(X));
@@ -34,7 +34,7 @@ for num_target = [1:10]
         nn.gL = @(w,Xds,yds) (2*sig(Xds)*((y(Xds,w)-yds).*y(Xds,w).*(1-y(Xds,w)))')/size(yds,2)+la*w;
         for isd = [1 3 7]
             par.isd = isd;
-            [nnout] = uo_nn_solve_st(nn,par); %Funció a implementar. Es pot provar amb uo_nn_solve(nn, par).
+            [nnout] = uo_nn_solve(nn,par); %Funció a implementar. Es pot provar amb uo_nn_solve(nn, par).
             if iheader == 1
                 fprintf(fileID,'num_target;      la; isd;  niter;     tex; tr_acc; te_acc;        L*;\n');
             end

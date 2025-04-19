@@ -105,12 +105,12 @@ niter = size(sol, 2); % Numero de interacions fetes
 
 %
 % Training accuracy 
-tr_acc = nn.Acc(Xtr, ytr, w);
+tr_acc = nn.Acc(Xtr, ytr, w)
 %
 
 %
 % Test accuracy
-te_acc = nn.Acc(Xte, yte, w);
+te_acc = nn.Acc(Xte, yte, w)
 %
 
 
@@ -130,17 +130,13 @@ nnout.yte    = yte;
 nnout.te_acc = te_acc;
 
 % Results output on terminal
-fprintf("\tOptimization wall time = %f\n", nnout.tex)
+fprintf("Optimization wall time = %f\n", nnout.tex)
 w = reshape(1:35, 7, 5);
-fprintf("\two = [\n")
-for i = 1:size(w, 1)
-    fprintf('\t%+5.1e,%+5.1e,%+5.1e,%+5.1e,%+5.1e\n', w(i, :));
+fprintf("wo = [\n")
+for i = 1:size(wo, 1)
+    fprintf('[%s]         %+5.1e,%+5.1e,%+5.1e,%+5.1e,%+5.1e\n', function_name, wo(i, :));
 end
-fprintf("\t     ]\n")
-fprintf("Accuracy.\n")
-fprintf("\ttr_accuracy = %f\n", tr_acc)
-fprintf("\tte_accuracy = %f\n", te_acc)
-
+fprintf("")
 
 
 end
