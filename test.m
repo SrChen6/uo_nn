@@ -1,6 +1,6 @@
 % NN model:
-nn.tr_seed = 129456; nn.te_seed = 789101; nn.sg_seed = 565544; % Seeds.
-nn.tr_p = 250; nn.te_q = nn.tr_p /10; nn.tr_freq = 0.5;      % Datasets 
+nn.tr_seed = 7431987; nn.te_seed = 53866934; nn.sg_seed = 74315386; % Seeds.
+nn.tr_p = 25000; nn.te_q = nn.tr_p /10; nn.tr_freq = 0.5;      % Datasets 
 % Training
 par.epsG = 10^-2; par.maxiter = 100;                           % Stopping cond.
 par.iAC = 4; par.c1 = 0.01; par.c2 = 0.9;                      % Linesearch.
@@ -17,16 +17,16 @@ nn.Acc = @(Xds,yds,wo) 100*sum(yds==round(y(Xds,wo)))/size(Xds,2);
 % run
 %
 global iheader; iheader = 1;
-fileID = fopen('uo_nn_batch.csv','w');
+fileID = fopen('test.csv','w');
 t1 = clock;
 for num_target = 10
     nn.num_target = num_target;
-    for la = 0.1
+    for la = 0.00
         % Loss function
         nn.la = la;
         nn.L  = @(w,Xds,yds) (norm(y(Xds,w)-yds)^2)/size(yds,2) + (la*norm(w)^2)/2;
         nn.gL = @(w,Xds,yds) (2*sig(Xds)*((y(Xds,w)-yds).*y(Xds,w).*(1-y(Xds,w)))')/size(yds,2)+la*w;
-        for isd = 1
+        for isd = 7
             par.isd = isd;
             [nnout] = uo_nn_solve_st(nn,par); %Funció a implementar.
             if iheader == 1

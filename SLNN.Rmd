@@ -1,0 +1,232 @@
+---
+title: "SLNN"
+author: "Laia"
+date: "2025-04-23"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Numero de iterations depenent de lambda i el mètode (escala logarítmica)
+
+```{r}
+data<- read.csv("uo_nn_batch.csv", header=TRUE, sep = ";", dec=",")
+
+# Group by method and lambda
+avg_niter <- data %>%
+  group_by(isd, la) %>%
+  summarise(mean_niter = mean(niter, na.rm = TRUE)) %>%
+  ungroup()
+
+# Convert both la and isd into factors
+avg_niter <- avg_niter %>%
+  mutate(
+    la = as.factor(la),
+    isd = as.factor(isd)
+  )
+
+# Plot: Lambda (la) on x-axis, average iterations (niter) on y-axis, log scale for y-axis
+ggplot(avg_niter, aes(x = la, y = mean_niter, fill = isd)) +
+  geom_col(position = "dodge") +
+  scale_y_log10() +  # Log scale for y-axis
+  labs(
+    x = "Lambda (la)",
+    y = "Average Number of Iterations (niter, log scale)",
+    fill = "Method (isd)",
+    title = "Average Iterations by Method and Lambda"
+  ) +
+  theme_minimal()
+```
+
+temps d'execució en funció de lambda i el mètode
+
+```{r}
+# Group by method and lambda
+avg_tex <- data %>%
+  group_by(isd, la) %>%
+  summarise(mean_tex = mean(as.numeric(tex), na.rm = TRUE)) %>%
+  ungroup()
+
+# Convert la and isd into factors
+avg_tex <- avg_tex %>%
+  mutate(
+    la = as.factor(la),
+    isd = as.factor(isd)
+  )
+
+# Plot: Lambda (la) on x-axis, average execution time (tex) on y-axis, log scale for y-axis
+ggplot(avg_tex, aes(x = la, y = mean_tex, fill = isd)) +
+  geom_col(position = "dodge") +
+  scale_y_log10() +  # Log scale for y-axis
+  labs(
+    x = "Lambda (la)",
+    y = "Average Execution Time (tex, log scale)",
+    fill = "Method (isd)",
+    title = "Average Execution Time by Method and Lambda"
+  ) +
+  theme_minimal()
+
+```
+
+tex/niter
+```{r}
+# Merge the two dataframes: avg_tex and avg_niter
+ratio_data <- avg_tex %>%
+  left_join(avg_niter, by = c("isd", "la")) %>%
+  mutate(ratio_tex_niter = mean_tex / mean_niter)
+
+# Plot the ratio (tex/niter) with y-axis starting from 0
+ggplot(ratio_data, aes(x = la, y = ratio_tex_niter, fill = isd)) +
+  geom_col(position = "dodge") +
+  labs(
+    x = "Lambda (la)",
+    y = "Execution Time / Iterations (tex/niter)",
+    fill = "Method (isd)",
+    title = "Ratio of Execution Time to Iterations by Method and Lambda"
+  ) +
+  theme_minimal()
+```
+
+Accuracy segons lambda i el metode
+```{r}
+# Group by method and lambda
+avg_acc <- data %>%
+  group_by(isd, la) %>%
+  summarise(mean_acc = mean(as.numeric(te_acc), na.rm = TRUE)) %>%
+  ungroup()
+
+# Convert la and isd into factors
+avg_acc <- avg_acc %>%
+  mutate(
+    la = as.factor(la),
+    isd = as.factor(isd)
+  )
+
+# Plot: Lambda (la) on x-axis, average execution time (tex) on y-axis, log scale for y-axis
+ggplot(avg_acc, aes(x = la, y = mean_acc, fill = isd)) +
+  geom_col(position = "dodge") +
+  labs(
+    x = "Lambda (la)",
+    y = "Average Test Accuracy",
+    fill = "Method (isd)",
+    title = "Average Accuracy by Method and Lambda"
+  ) +
+  theme_minimal()
+
+```
+
+--------------------------------------------------------------------------------
+
+```{r}
+execucions <- read.csv("uo_nn_batch.csv", header=TRUE, sep = ";", dec=",")
+```
+
+Separem per mètode:
+```{r}
+execucions$te_acc = as.numeric(execucions$te_acc)
+GM <-  execucions[execucions$isd == 1, ]
+QNM <-  execucions[execucions$isd == 3, ]
+SGM <-  execucions[execucions$isd == 7, ]
+```
+
+
+```{r}
+library(dplyr)
+
+# Number of iterations
+iters_GM <- GM %>%
+  group_by(la) %>%
+  summarise(niter = mean(niter), .groups = "drop")
+
+iters_QNM <- QNM %>%
+  group_by(la) %>%
+  summarise(niter = mean(niter), .groups = "drop")
+
+iters_SGM <- SGM %>%
+  group_by(la) %>%
+  summarise(niter = mean(niter), .groups = "drop")
+
+# Runing time
+time_GM <- GM %>%
+  group_by(la) %>%
+  summarise(tex = mean(as.numeric(tex)), .groups = "drop")
+
+time_QNM <- QNM %>%
+  group_by(la) %>%
+  summarise(tex = mean(as.numeric(tex)), .groups = "drop")
+
+time_SGM <- SGM %>%
+  group_by(la) %>%
+  summarise(tex = mean(as.numeric(tex)), .groups = "drop")
+
+# test accuracy
+acc_GM <- GM %>%
+  group_by(la) %>%
+  summarise(te_acc = mean(te_acc), .groups = "drop")
+
+acc_QNM <- QNM %>%
+  group_by(la) %>%
+  summarise(te_acc = mean(te_acc), .groups = "drop")
+
+acc_SGM <- SGM %>%
+  group_by(la) %>%
+  summarise(te_acc = mean(te_acc), .groups = "drop")
+```
+
+
+# 1. Global convergence
+
+Num iters
+
+```{r}
+library(ggplot2)
+ggplot(iters_GM, aes(x=as.factor(la), y = niter, fill=as.factor(la))) +  
+  geom_bar(stat = "identity" ) +
+  #coord_cartesian(ylim = c(80, 100)) +
+  xlab("Value of lambda") +
+  ylab("Number of iterations") +
+  scale_fill_manual(values = c("darkred", "darkgreen", "darkblue") ) +
+  theme(legend.position="none")
+```
+
+# 2. Local convergence
+
+running time
+
+Test accuracy
+
+```{r}
+library(ggplot2)
+ggplot(acc_GM, aes(x=as.factor(la), y = te_acc, fill=as.factor(la))) +  
+  geom_bar(stat = "identity" ) +
+  #coord_cartesian(ylim = c(80, 100)) +
+  xlab("Value of lambda") +
+  ylab("Test Accuracy (%)") +
+  scale_fill_manual(values = c("darkred", "darkgreen", "darkblue") ) +
+  theme(legend.position="none")
+```
+
+```{r}
+library(ggplot2)
+ggplot(new_QNM, aes(x=as.factor(la), y = te_acc, fill=as.factor(la))) +  
+  geom_bar(stat = "identity" ) +
+  #coord_cartesian(ylim = c(80, 100)) +
+  xlab("Value of lambda") +
+  ylab("Test Accuracy (%)") +
+  scale_fill_manual(values = c("darkred", "darkgreen", "darkblue") ) +
+  theme(legend.position="none")
+```
+
+```{r}
+library(ggplot2)
+ggplot(new_SGM, aes(x=as.factor(la), y = te_acc, fill=as.factor(la))) +  
+  geom_bar(stat = "identity" ) +
+  #coord_cartesian(ylim = c(80, 100)) +
+  xlab("Value of lambda") +
+  ylab("Test Accuracy (%)") +
+  scale_fill_manual(values = c("darkred", "darkgreen", "darkblue") ) +
+  theme(legend.position="none")
+```

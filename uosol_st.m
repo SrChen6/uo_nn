@@ -38,8 +38,8 @@ ldescent = true;
 if par.isd == 7 % Initializations for SG
     Xtr = par.sg.Xtr;
     ytr = par.sg.ytr;
-    gL = @(w, Xtr, ytr) g(x, Xtr, ytr); %Name change
-    g = @(w) g(x, Xtr, ytr);
+    gL = @(x, Xtr, ytr) g(x, Xtr, ytr); %Name change
+    g = @(x) g(x, Xtr, ytr);
     p = size(par.sg.Xtr, 2);
     m = par.sg.m;
     k_e = ceil(p/m);
@@ -59,7 +59,7 @@ s = 0;
 %
 % Algorithm
 %
-while norm(g(x)) > par.epsG & k < par.maxiter & (ldescent | par.isd == 4) & (e <= par.sg.emax & s < par.sg.eworse)
+while norm(g(x)) > par.epsG & k < par.maxiter & (ldescent | par.isd == 4 | par.isd == 7) & (e <= par.sg.emax & s < par.sg.eworse)
     if par.isd == 1
         % GM
         d = -g(x);
@@ -133,7 +133,7 @@ while norm(g(x)) > par.epsG & k < par.maxiter & (ldescent | par.isd == 4) & (e <
   
     if par.isd == 7 %Stochastic gradient
         e = e + 1;
-        L = f(x, Xtr, ytr);
+        L = f(x, par.sg.Xte, par.sg.yte);
         if L < L_best
             L_best = L;
             s = 0;
@@ -197,5 +197,6 @@ if par.log ~= 0
         [sol] = uosolLog(P,par,sol);
     end
 end
+
 % [end] Function [uosol_st] %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

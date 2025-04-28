@@ -44,7 +44,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function [nnout] = uo_nn_solve_st(nn,par)
-t1 = clock; %Maybe change for tic/toc
+tic %Stopwatch start
 
 % Terminal outputs
 fprintf("::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n")
@@ -64,7 +64,7 @@ fprintf("\t te_seed\t=%d\n", nn.te_seed)
 fprintf("Optimization\n")
 fprintf("\tL2 reg. lambda = %f\n", nn.la)
 fprintf("\tw1 = [0]")
-fprintf("\tCall uosol.")
+fprintf("\tCall uosol.\n")
 
 
 % Training dataset generation
@@ -90,8 +90,8 @@ P.h = @(w) eye(35); % hessian not needed (only first order methods)
 end
 
 wo = zeros(35, 1);
-par.sg.Xtr = Xtr;
-par.sg.ytr = ytr;
+par.sg.Xtr = Xtr; par.sg.ytr = ytr;
+par.sg.Xte = Xte; par.sg.yte = yte;
 [sol, ~] = uosol_st(P, wo, par);
 w = sol(end).x;
 
@@ -113,17 +113,12 @@ tr_acc = nn.Acc(Xtr, ytr, w);
 te_acc = nn.Acc(Xte, yte, w);
 %
 
-
-t2 = clock; 
-tex = etime(t2,t1);
-
-%
 nnout.Xtr    = Xtr;
 nnout.ytr    = ytr;
 nnout.wo     = w;
 nnout.Lo     = Lo;
 nnout.niter  = niter;
-nnout.tex    = tex;
+nnout.tex    = toc;
 nnout.tr_acc = tr_acc;
 nnout.Xte    = Xte;
 nnout.yte    = yte;
@@ -140,8 +135,6 @@ fprintf("\t     ]\n")
 fprintf("Accuracy.\n")
 fprintf("\ttr_accuracy = %f\n", tr_acc)
 fprintf("\tte_accuracy = %f\n", te_acc)
-
-
 
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
